@@ -28,10 +28,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: [{
-                role: "system",
-                content: "You are a super-intelligent AI assistant. Assist the user in any way you can."
-            }],
+            messages: [],
             loading: false,
             userInput: ""
         };
@@ -82,7 +79,7 @@ class App extends Component {
 
             this.setState({
                 // set new conversation
-                messages: [...newMessages, { role: "assistant", content: response }]
+                messages: [...newMessages, { role: "model", content: response }]
             }, () => {
                 // always scroll down on first message
                 if (isScrolledToBottom || first) {
@@ -100,7 +97,7 @@ class App extends Component {
         return (
             <Container maxWidth="md">
                 <div style={{ minHeight: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                    <h1>Your Personal AI</h1>
+                    <h1>Powells AI Tester</h1>
                     <div style={{ flexGrow: 1 }}>
                         {messages.map((message, index) =>
                             <>
